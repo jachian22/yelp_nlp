@@ -7,10 +7,10 @@ import urllib
 import urllib2
 
 
-KEY = "xB81rVIN4OSVI-PEcT0dpg"
-SECRET_KEY = "-ybPaAjYbQv9HAMWW-LN63VYmcQ"
-TOKEN = "ATlWJsZA957Qg4PTEb6ZFZN7o4HA9D73"
-SECRET_TOKEN = "iuQQ1-m_cz4JYszRtMTwfFfBf80"
+KEY = ""
+SECRET_KEY = ""
+TOKEN = ""
+SECRET_TOKEN = ""
 
 
 def request_page(path, url_params=None):
