@@ -1,5 +1,16 @@
 Using Aspect-Based Sentiment For More Personalized Restaurant Recommendations
 =============================================================================
+About
+-----
+This project makes the assertion that much more work goes into finding the right restaurant to eat at than just finding the highest rated restaurant in town. There are different criteria that people look into while jumping from review to review to get hints about when deciding on a restaurant. I created a proof of concept for Yelp Helper to improve upon the restaurant search experience.
+
+Yelp Helper takes user-specified weights for the different components of the restaurant experience (food, service, atmosphere, value, and decor) and caters your restaurant search results to those weightings. 
+
+The best part is that Yelp Helper lists the restaurants with the bar charts showing what the average Yelper thinks about each of those components for each restaurant. This gives users a quick view of what each restaurant excels at; all without reading a single Yelp review.
+
+Slides:
+https://docs.google.com/presentation/d/12YiE524RtKoTDpPqFrh8ETWj5YEes7Xj-BNTmECueZU/edit
+
 explore_yelp_data.ipynb
 -----------------------
 The iPython Notebook shows a cleaned up exploration of the Yelp Review dataset. A lot of the work determining the most prominent subjects, the distributions of words around these subjects, the distributions of ways adjectives are separated from these subjects, and the SQL queries to examine the results of my search.
