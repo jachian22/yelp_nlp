@@ -49,21 +49,19 @@ def exploratory_analysis(tokenized, word_feats):
 	'''
 	pre = defaultdict(list)
 	for doc in tokenized:
-	    for i in xrange(1, len(doc)):
-	        if doc[i] in word_feats:
-	            pre[ doc[i] ].append(doc[i-1])
+	    for i, word in enumerate(doc[1:]):
+	        if word in word_feats:
+	            pre[word].append(doc[i-1])
 
 	post = defaultdict(list)
 	for doc in tokenized:
-	    for i in xrange(1, len(doc)):
+	    for i in enumerate(doc[:-1]):
 	        if doc[i-1] in word_feats:
-	            post[ doc[i-1] ].append(doc[i])
+	            post[doc[i-1]].append(word)
 
-	for w in word_feats:
-	    pre[w] = nltk.FreqDist(pre[w])
-	    pre[w] = pre[w].most_common(20)
-	    post[w] = nltk.FreqDist(post[w])
-	    post[w] = post[w].most_common(20)
+    pre  = [nltk.FreqDist(pre[w]).most_common(20)  for w in word_feats]
+    post = [nltk.FreqDist(post[w]).most_common(20) for w in word_feats]
+
 	return pre, post
 
 #===============================================================================
@@ -75,13 +73,10 @@ def join_fol(words_list, joins):
 	INPUT: List of words from nltk.word_tokenize(), and list of word markers
 	OUTPUT: List of words
 	'''
-	for i, word in enumerate(words_list[:-1]):
-		if word in joins:
-			words_list[i + 1] = ' '.join([ word, words_list[i + 1] ])
-	for word in words_list:
-		if word in joins:
-			words_list.remove(word)
-	return words_list
+	temp = [word if word not in joins else ' '.join([word, words_list[i+1]])\
+			for i, word in enumerate(words_list[:-1])]
+	temp = [word for i, word in enumerate(temp) if ' ' not in list(temp[i-1])]
+	return temp + [words_list[-1]]
 
 def join_pre(words_list, joins):
 	'''
@@ -92,7 +87,7 @@ def join_pre(words_list, joins):
 	'''
 	for i, word in enumerate(words_list[1:]):
 		if word in joins:
-			words_list[i - 1] = ' '.join([words_list[i - 1], word])
+			words_list[i-1] = ' '.join([words_list[i-1], word])
 	for word in words_list:
 		if word in joins:
 			words_list.remove(word)

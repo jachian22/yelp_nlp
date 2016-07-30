@@ -30,3 +30,9 @@ This utility page contained all the web scraping utility functions required to s
 yelp_helpers.py
 ---------------
 This final utility page contained the functions for making requests to the Yelp API to gather the business IDs for the highest rated restaurants around the SoMa area.
+
+Coming Soon!
+------------
+- An Aspect-Based Sentiment model class that can **train** a model on the corpus of Yelp review text and  **predict** the component scores based on the given text of a review.
+- A hosted version of my model to let you try out the model I've already trained to predict your experience at a given restaurant given the text of the review you input into the text box
+- Rebuild of parts of the algo to scale better and some fixes that may be able to generalize the aspect-based sentiment to other review realms such as Amazon.
